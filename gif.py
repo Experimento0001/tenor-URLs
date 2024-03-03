@@ -17,7 +17,7 @@ def obtener_urls_gifs(api_key, consulta, cantidad=20, random=False):
 
         datos_json = respuesta.json()
 
-        # Obtener la URL del GIF principal
+   
         urls_gifs = [
             item['media_formats']['gif']['url']
             for item in datos_json.get('results', [])
@@ -29,19 +29,19 @@ def obtener_urls_gifs(api_key, consulta, cantidad=20, random=False):
         print(f"Error en la solicitud a la API de Tenor: {e}")
         return []
 
-# Ingresa tu clave de API de Tenor
+
 tenor_api_key = "TuClaveDeAPI"
 
 while True:
-    # Ingresa la consulta y la cantidad deseada
+
     consulta = input("Ingresa la consulta (por ejemplo, 'anime angry'): ")
     cantidad = int(input("Ingresa la cantidad de GIFs que deseas (valor máximo 50): "))
     random_order = input("¿Ordenar los resultados de forma aleatoria? (True/False): ").capitalize() == "True"
 
-    # Obtener las URLs de los GIFs
+
     urls_gifs = obtener_urls_gifs(tenor_api_key, consulta, cantidad, random_order)
 
-    # Imprimir las URLs de los GIFs
+
     print("\nURLs de los GIFs:")
     print(',\n'.join([f"'{url}'" for url in urls_gifs]))
 
